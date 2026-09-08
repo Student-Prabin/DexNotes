@@ -1,240 +1,277 @@
+<div align="center">
 📝 DexNotes
+A simple full-stack note-taking application built with the MERN stack.
+<p> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" /> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" /> <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" /> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios" /> </p> <p> <a href="https://github.com/Student-Prabin/DexNotes"> <img src="https://img.shields.io/github/stars/Student-Prabin/DexNotes?style=flat-square" alt="Stars" /> </a> <a href="https://github.com/Student-Prabin/DexNotes/issues"> <img src="https://img.shields.io/github/issues/Student-Prabin/DexNotes?style=flat-square" alt="Issues" /> </a> <a href="https://github.com/Student-Prabin/DexNotes"> <img src="https://img.shields.io/github/license/Student-Prabin/DexNotes?style=flat-square" alt="License" /> </a> </p> </div>
+📖 About
 
-DexNotes is a simple full-stack note-taking application built with the MERN stack.
+DexNotes is a full-stack note-taking application built using the MERN stack.
 
-This project was created primarily to revise and strengthen my MERN stack knowledge by building a complete application from frontend to backend and database. It serves as a practical refresher for concepts such as REST APIs, CRUD operations, MongoDB, API communication, middleware, and basic backend security.
+This project was created primarily as a MERN revision project. Instead of revisiting each technology separately, I wanted to practice building a complete application and refresh my understanding of how the different parts of a full-stack application work together.
 
-DexNotes is also the starting point for a future idea called DexGoals — a social platform where friends can share their goals, track progress, and keep each other accountable.
+The project covers concepts such as React, REST APIs, CRUD operations, MongoDB, Mongoose, Axios, Express middleware, and API rate limiting.
 
-🎯 Purpose
+🚧 DexNotes is a learning project and is still evolving.
 
-The main purpose of DexNotes is learning and revision.
-
-Instead of revising MERN concepts separately, I wanted to put them together in a small project and practice building a full-stack application.
-
-Through this project, I'm revisiting:
-
-React and frontend development
-Node.js and Express.js
-MongoDB and Mongoose
-REST API development
-CRUD operations
-Client-server communication
-Axios for making API requests
-Express middleware
-API rate limiting
-Environment variables
-Full-stack project structure
-🚀 Features
-Notes
-Create notes
-View notes
-Update notes
-Delete notes
-Store notes in MongoDB
-Backend
-RESTful API using Express.js
-MongoDB integration using Mongoose
-Rate limiting to help prevent excessive API requests
-Environment-based configuration
-Middleware-based backend structure
-Frontend
-Built with React
-Axios for communicating with the backend API
-Simple and responsive user interface
+✨ Features
+📝 Create notes
+👀 View notes
+✏️ Update notes
+🗑️ Delete notes
+💾 Persistent storage with MongoDB
+🔗 RESTful API
+⚡ Axios for API communication
+🛡️ API rate limiting
+🔧 Express middleware
+🔐 Environment variable configuration
+🏗️ Separate frontend and backend architecture
 🛠️ Tech Stack
-Technology	Purpose
-React	Frontend UI
-Node.js	Backend runtime
-Express.js	REST API and server
-MongoDB	Database
-Mongoose	MongoDB object modeling
-Axios	HTTP requests between frontend and backend
-Rate Limiting	Basic API protection
-JavaScript	Primary programming language
-🏗️ Application Architecture
-┌──────────────────────┐
-│                      │
-│       React          │
-│      Frontend        │
-│                      │
-└──────────┬───────────┘
-           │
-           │ Axios
-           │ HTTP Requests
-           ▼
-┌──────────────────────┐
-│                      │
-│   Node.js + Express  │
-│                      │
-│    REST API          │
-│    Middleware        │
-│    Rate Limiting     │
-│                      │
-└──────────┬───────────┘
-           │
-           │ Mongoose
-           ▼
-┌──────────────────────┐
-│                      │
-│       MongoDB        │
-│                      │
-└──────────────────────┘
+Frontend
+Technology	Usage
+⚛️ React	Building the user interface
+📡 Axios	Making HTTP requests to the backend
+🟨 JavaScript	Application logic
+🎨 CSS	Styling
+Backend
+Technology	Usage
+🟢 Node.js	JavaScript runtime
+🚂 Express.js	Backend framework and REST API
+🍃 Mongoose	MongoDB object modeling
+🛡️ Rate Limiting	Limiting excessive API requests
+Database
+Technology	Usage
+🍃 MongoDB	Storing notes and application data
+🏗️ Architecture
+                    ┌──────────────────┐
+                    │                  │
+                    │      React       │
+                    │    Frontend      │
+                    │                  │
+                    └────────┬─────────┘
+                             │
+                             │ Axios
+                             │ HTTP Requests
+                             ▼
+                    ┌──────────────────┐
+                    │                  │
+                    │ Node.js +        │
+                    │ Express.js       │
+                    │                  │
+                    │ ┌──────────────┐ │
+                    │ │ Rate Limiter │ │
+                    │ └──────────────┘ │
+                    │                  │
+                    │    REST API      │
+                    │                  │
+                    └────────┬─────────┘
+                             │
+                             │ Mongoose
+                             ▼
+                    ┌──────────────────┐
+                    │                  │
+                    │     MongoDB      │
+                    │                  │
+                    └──────────────────┘
 
 📂 Project Structure
 DexNotes/
 │
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.jsx
-│   │
-│   └── package.json
-│
-├── server/
+├── backend/
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   ├── middleware/
 │   ├── config/
-│   └── server.js
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   └── ...
 │
 ├── .gitignore
-├── README.md
-└── package.json
+├── package.json
+└── README.md
 
 
-The structure may change as the project develops.
+The project structure may change as the application evolves.
 
-🔐 Rate Limiting
+🚀 Getting Started
+Prerequisites
 
-The backend includes API rate limiting as a basic security measure.
+Make sure you have the following installed:
 
-Rate limiting restricts the number of requests a client can make within a certain period of time. This helps reduce excessive requests and provides basic protection against API abuse.
+Node.js
+MongoDB
+1. Clone the repository
+git clone https://github.com/Student-Prabin/DexNotes.git
 
-This is also part of the project because I wanted to refresh some backend concepts beyond basic CRUD functionality.
-
-⚙️ Getting Started
-Clone the repository
-git clone <your-repository-url>
 cd DexNotes
 
-Install dependencies
+2. Install dependencies
 
 Install the backend dependencies:
 
-cd server
+cd backend
 npm install
 
 
 Install the frontend dependencies:
 
-cd ../client
+cd ../frontend
 npm install
 
-Environment Variables
+3. Configure environment variables
 
-Create a .env file in the backend directory.
+Create a .env file inside the backend directory.
 
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 
 
-Add any other environment variables required by the project.
+Make sure your .env file is included in .gitignore and never commit your database credentials.
 
-Run the backend
-cd server
+4. Start the backend
+cd backend
 npm run dev
 
-Run the frontend
+5. Start the frontend
 
-In another terminal:
+Open another terminal:
 
-cd client
+cd frontend
 npm run dev
+
+
+The application should now be running locally.
+
+🔐 Rate Limiting
+
+DexNotes includes API rate limiting on the backend.
+
+Rate limiting restricts the number of requests a client can make within a specific period of time. This helps prevent excessive requests and provides a basic layer of protection against API abuse.
+
+Implementing rate limiting was also part of my goal of revisiting backend concepts beyond basic CRUD operations.
+
+🎯 What I'm Practicing
+
+The main purpose of this project is to revise MERN by building.
+
+Some of the concepts I'm practicing include:
+
+⚛️ React component development
+🔗 REST API integration
+📡 Axios HTTP requests
+🟢 Express.js routing
+🔄 CRUD operations
+🍃 MongoDB and Mongoose
+🧩 Express middleware
+🛡️ API rate limiting
+🔐 Environment variables
+🏗️ Full-stack project architecture
+🔄 Frontend ↔ Backend communication
+
+The overall request flow is:
+
+React
+  │
+  ▼
+Axios
+  │
+  ▼
+Express API
+  │
+  ▼
+Middleware
+  │
+  ▼
+Rate Limiting
+  │
+  ▼
+Mongoose
+  │
+  ▼
+MongoDB
 
 🗺️ Roadmap
-Current — DexNotes
+DexNotes
  MERN project setup
  MongoDB integration
  REST API
  Note CRUD operations
- Axios API communication
+ Axios integration
  API rate limiting
  Authentication
- Further UI improvements
-Future — DexGoals
+ Improve UI/UX
+ Add more advanced features
+🔮 Future — DexGoals
 
-The long-term idea is to evolve DexNotes into DexGoals.
+DexNotes is intended to be the starting point for a future project called DexGoals.
 
-DexGoals would allow users to create goals and share them with friends, creating a more social and accountability-focused experience.
+The idea is to evolve the application from a personal note-taking app into a social goal-sharing platform where friends can create goals, share their progress, and keep each other accountable.
 
-Possible future features:
+Potential Features
+👤 User authentication
+🧑 User profiles
+🎯 Create and manage goals
+📅 Goal deadlines
+📊 Progress tracking
+👥 Friends system
+📢 Share goals with friends
+❤️ Reactions
+💬 Comments
+🔔 Notifications
+🔥 Goal streaks
+🏆 Achievements
+🔒 Privacy controls
 
- User authentication
- User profiles
- Create and manage goals
- Goal deadlines
- Goal progress tracking
- Friends
- Share goals
- Reactions
- Comments
- Notifications
- Goal streaks
- Achievements
- Progress dashboard
- Privacy controls
+The planned evolution:
 
-The general idea:
+                     DexNotes
+                        │
+                        │
+                 MERN Revision
+                        │
+                        ▼
+                     DexGoals
+                        │
+          ┌─────────────┼─────────────┐
+          ▼             ▼             ▼
+        Goals         Friends       Progress
+          │             │             │
+          └─────────────┼─────────────┘
+                        ▼
+                  Accountability
 
-DexNotes
-   │
-   │  MERN revision project
-   ▼
-DexGoals
-   │
-   ├── Users
-   ├── Goals
-   ├── Friends
-   ├── Progress
-   ├── Accountability
-   └── Community
+💡 The Idea
 
-🌱 What I'm Practicing
+DexNotes — Write it down.
+DexGoals — Set it. Share it. Achieve it.
 
-This project is mainly about revisiting MERN by building, rather than trying to create a large production application from the beginning.
+📚 Why I Built This
 
-The project gives me a chance to refresh how the different parts of a MERN application work together:
+This project is primarily about refreshing my MERN knowledge through hands-on development.
 
-React
-  ↓
-Axios
-  ↓
-Express API
-  ↓
-Middleware / Rate Limiting
-  ↓
-Mongoose
-  ↓
-MongoDB
+Rather than building DexGoals immediately, I wanted to start with something smaller and use it to rebuild my understanding of the MERN fundamentals.
 
+As I continue developing DexNotes, I can gradually introduce more complex concepts and eventually use the project as the foundation for DexGoals.
 
-As the project grows, I plan to use the same foundation to explore more advanced concepts and eventually experiment with the DexGoals idea.
+📌 Project Status
+<div align="center">
+🚧 In Development
 
-🔮 From Notes to Goals
+This is currently a learning and revision project.
 
-DexNotes is the starting point.
+More features and improvements will be added as I continue exploring the MERN stack.
 
-Today, the application is focused on creating and managing notes.
+</div>
+👨‍💻 Author
 
-In the future, I want to transform the concept into DexGoals, where the focus shifts from storing information to achieving something.
+Prabin
 
-DexNotes: Write it down.
-DexGoals: Set it. Share it. Achieve it. 🚀
+GitHub: @Student-Prabin
 
-📄 License
+<div align="center">
+⭐ If you find this project interesting, consider giving it a star!
 
-This project is primarily for learning, practice, and experimentation with the MERN stack.
+Built while revisiting the MERN stack 🚀
+
+</div>
