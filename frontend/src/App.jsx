@@ -1,20 +1,30 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoutes'
 import HomePage from './pages/HomePage'
 import CreatePage from './pages/CreatePage'
 import NoteDetail from './pages/NoteDetail'
-import toast from 'react-hot-toast'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
 
 const App = () => {
   return (
-   <div data-theme="coffee">
-      <Routes>
-        <Route path='/' element={<HomePage/>}/>
-        <Route path='/create' element={<CreatePage/>}/>
-        <Route path='/note/:id' element={<NoteDetail/>}/>
+    <AuthProvider>
+      <div data-theme="coffee">
+        <Routes>
+          {/* Public Auth Routes */}
+            <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
 
-      </Routes>
-    </div>
+
+          {/* Protected Routes */}
+          <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          <Route path='/create' element={<ProtectedRoute><CreatePage /></ProtectedRoute>} />
+          <Route path='/goal/:id' element={<ProtectedRoute><NoteDetail /></ProtectedRoute>} />
+        </Routes>
+      </div>
+    </AuthProvider>
   )
 }
 

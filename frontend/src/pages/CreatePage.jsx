@@ -21,22 +21,22 @@ const CreatePage = () => {
 
     setLoading(true);
     try {
-      await api.post("/notes", {
+      await api.post("/goals", {
         title,
         content,
       });
 
-      toast.success("Note created successfully!");
+      toast.success("Goal created successfully!");
       navigate("/");
     } catch (error) {
-      console.log("Error creating note", error);
-      if (error.response.status === 429) {
-        toast.error("Slow down! You're creating notes too fast", {
+      console.log("Error creating Goal", error);
+      if (error.response?.status === 429) {
+        toast.error("Slow down! You're creating Goals too fast", {
           duration: 4000,
           icon: "💀",
         });
       } else {
-        toast.error("Failed to create note");
+        toast.error("Failed to create Goal");
       }
     } finally {
       setLoading(false);
@@ -49,33 +49,33 @@ const CreatePage = () => {
         <div className="max-w-2xl mx-auto">
           <Link to={"/"} className="btn btn-ghost mb-6">
             <ArrowLeftIcon className="size-5" />
-            Back to Notes
+            Back to Goals
           </Link>
 
-          <div className="card bg-base-100">
+          <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
-              <h2 className="card-title text-2xl mb-4">Create New Note</h2>
+              <h2 className="card-title text-2xl mb-4">Create New Goal</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-control mb-4 flex flex-col justify-center gap-2">
                   <label className="label">
-                    <span className="label-text text-lg font-bold ">Title</span>
+                    <span className="label-text text-lg font-bold">Title</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Note Title"
-                    className="input input-bordered w-xl"
+                    placeholder="Goal Title"
+                    className="input input-bordered w-full"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
 
-                <div className="form-control mb-4  flex flex-col justify-center gap-2">
+                <div className="form-control mb-4 flex flex-col justify-center gap-2">
                   <label className="label">
-                    <span className="label-text text-lg font-bold ">Content</span>
+                    <span className="label-text text-lg font-bold">Content</span>
                   </label>
                   <textarea
-                    placeholder="Write your note here..."
-                    className="textarea textarea-bordered h-36 w-xl resize-none"
+                    placeholder="Write your Goal here..."
+                    className="textarea textarea-bordered h-36 w-full resize-none"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
@@ -83,7 +83,7 @@ const CreatePage = () => {
 
                 <div className="card-actions justify-end">
                   <button type="submit" className="btn btn-primary" disabled={loading}>
-                    {loading ? "Creating..." : "Create Note"}
+                    {loading ? "Creating..." : "Create Goal"}
                   </button>
                 </div>
               </form>
@@ -94,4 +94,5 @@ const CreatePage = () => {
     </div>
   );
 };
+
 export default CreatePage;

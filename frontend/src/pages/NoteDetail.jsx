@@ -17,7 +17,7 @@ const NoteDetailPage = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await api.get(`/notes/${id}`);
+        const res = await api.get(`/goals/${id}`);
         setNote(res.data);
       } catch (error) {
         console.log("Error in fetching note", error);
@@ -31,10 +31,10 @@ const NoteDetailPage = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    if (!window.confirm("Are you sure you want to delete this note?")) return;
+    if (!window.confirm("Are you sure you want to delete this goal?")) return;
 
     try {
-      await api.delete(`/notes/${id}`);
+      await api.delete(`/goals/${id}`);
       toast.success("Note deleted");
       navigate("/");
     } catch (error) {
@@ -52,8 +52,8 @@ const NoteDetailPage = () => {
     setSaving(true);
 
     try {
-      await api.put(`/notes/${id}`, note);
-      toast.success("Note updated successfully");
+      await api.put(`/goals/${id}`, note);
+      toast.success("Goal updated successfully");
       navigate("/");
     } catch (error) {
       console.log("Error saving the note:", error);
@@ -78,15 +78,15 @@ const NoteDetailPage = () => {
           <div className="flex items-center justify-between mb-6">
             <Link to="/" className="btn btn-ghost">
               <ArrowLeftIcon className="h-5 w-5" />
-              Back to Notes
+              Back to Goals
             </Link>
             <button onClick={handleDelete} className="btn btn-error btn-outline">
               <Trash2Icon className="h-5 w-5" />
-              Delete Note
+              Delete Goal
             </button>
           </div>
 
-          <div className="card bg-base-100">
+          <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
               <div className="form-control mb-4 flex flex-col justify-center gap-2">
                 <label className="label">
@@ -95,19 +95,19 @@ const NoteDetailPage = () => {
                 <input
                   type="text"
                   placeholder="Note title"
-                  className="input input-bordered w-xl"
+                  className="input input-bordered w-full"
                   value={note.title}
                   onChange={(e) => setNote({ ...note, title: e.target.value })}
                 />
               </div>
 
-              <div className="form-control mb-4  flex flex-col justify-center gap-2">
+              <div className="form-control mb-4 flex flex-col justify-center gap-2">
                 <label className="label">
                   <span className="label-text">Content</span>
                 </label>
                 <textarea
                   placeholder="Write your note here..."
-                  className="textarea textarea-bordered h-36 w-xl resize-none"
+                  className="textarea textarea-bordered h-36 w-full resize-none"
                   value={note.content}
                   onChange={(e) => setNote({ ...note, content: e.target.value })}
                 />
@@ -125,4 +125,5 @@ const NoteDetailPage = () => {
     </div>
   );
 };
+
 export default NoteDetailPage;
